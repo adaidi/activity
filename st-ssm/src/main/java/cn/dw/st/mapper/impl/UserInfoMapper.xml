@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dw.st.mapper.UserInfoMapper">
+
+	<insert id="add" parameterType="cn.dw.st.domain.UserInfo">
+	
+		inser into tbl_user_info
+		<trim prefix="("  suffix=")" suffixOverrides=",">
+			<if test="loginId !=null and loginId !='' ">
+				login_id,
+			</if>
+			<if test="userName !=null and userName !='' ">
+				user_name,
+			</if>
+			<if test="loginPwd !=null and loginPwd !='' ">
+				login_pwd,
+			</if>
+			<if test="sex !=null ">
+				sex,
+			</if>
+			<if test="telNo !=null and telNo !='' ">
+				tel_no,
+			</if>
+			<if test="identifyId !=null and identifyId !='' ">
+				identify_id,
+			</if>
+			<if test="remark !=null and remark !='' ">
+				remark,
+			</if>
+		</trim>
+		
+		
+		<trim prefix=" values("  suffix=")" suffixOverrides=",">
+			<if test="loginId !=null and loginId !='' ">
+				#{loginId}, 
+			</if>
+			<if test="userName !=null and userName !='' ">
+				#{userName},
+			</if>
+			<if test="loginPwd !=null and loginPwd !='' ">
+				#{loginPwd},
+			</if>
+			<if test="sex !=null ">
+				#{sex},
+			</if>
+			<if test="telNo !=null and telNo !='' ">
+				#{telNo},
+			</if>
+			<if test="identifyId !=null and identifyId !='' ">
+				#{identifyId},
+			</if>
+			<if test="remark !=null and remark !='' ">
+				#{remark},
+			</if>
+		</trim>
+	
+	</insert>
+
+
+</mapper>
