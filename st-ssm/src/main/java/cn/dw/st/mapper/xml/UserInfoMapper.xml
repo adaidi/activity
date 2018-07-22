@@ -4,7 +4,7 @@
 
 	<insert id="add" parameterType="cn.dw.st.domain.UserInfo">
 	
-		inser into tbl_user_info
+		insert into tbl_user_info
 		<trim prefix="("  suffix=")" suffixOverrides=",">
 			<if test="loginId !=null and loginId !='' ">
 				login_id,
@@ -55,6 +55,33 @@
 		</trim>
 	
 	</insert>
-
-
+	
+	
+	<select id="login" parameterType="cn.dw.st.domain.UserInfo" resultType="int">
+		
+			select count(1) from tbl_user_info  where login_id = #{loginId} and login_pwd = #{loginPwd}
+	
+	</select>
+	
+	
+	<resultMap type="cn.dw.st.domain.UserInfo" id="resultMap">
+		<id column="id" property="id" />
+		<result column="login_id" property="loginId"/>
+		<result column="login_pwd" property="loginPwd"/>
+		<result column="user_name" property="userName"/>
+		<result column="tel_no" property="telNo"/>
+		<result column="identify_id" property="identifyId"/>
+	</resultMap>
+	
+	<select id="query" parameterType="cn.dw.st.domain.UserInfo" resultMap="resultMap">
+		select * from tbl_user_info
+		<where>
+			<if test="userName !=null  and userName !='' ">
+				and user_name = #{userName}
+			</if>
+			<if test="telNo !=null  and telNo !='' ">
+				and tel_no = #{telNo}
+			</if>
+		</where>
+	</select>
 </mapper>

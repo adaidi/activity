@@ -23,12 +23,10 @@ public class UserInfo {
 	
 	private Integer sex;
 	
-	private String telNO;
+	private String telNo;
 	
 	private String identifyId;
 	
 	private String remark;
-	
-	
-	
+
 }
