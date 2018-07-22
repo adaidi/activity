@@ -2,8 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
 	<!-- spring的包扫描配置 -->
 	<context:component-scan base-package="cn.dw.st"></context:component-scan>
@@ -45,12 +47,41 @@
 		<property name="basePackage" value="cn.dw.st.mapper"></property>
 	</bean>
 	
-	
+	<!-- 文件上传配置 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
      <property name="maxUploadSize" value="104857600" />
      <property name="maxInMemorySize" value="4096" />
      <property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
+	
+	
+	<!--  <aop:config>
+    	<aop:aspect id = "aspect" ref="xmlAdvice">
+    		<aop:pointcut  id="pointOrder" 
+    			expression="execution(* com.server.service.impl.*Impl.*(..))"/>
+    		<aop:before method="doBefore" pointcut-ref="pointOrder"/>
+    		<aop:around method="doAround" pointcut-ref="pointOrder"/>
+    	</aop:aspect>
+    </aop:config>  -->
+	
+	<!-- 开启自动代理 -->
+	<!-- <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+	
+	
+	
+	
+	<aop:config >
+		<aop:pointcut expression="execution(* cn.dw.st.controller.*.*(..))" id="point"/>
+		<aop:aspect id="aspect" ref="xmlAdvice">
+			<aop:before method="doBefore" pointcut-ref="point"/>
+			<aop:after method="doAfter" pointcut-ref="point"/>
+		</aop:aspect>
+	</aop:config>
+	
+	
+	
+	
+	
 	
 	
 </beans>
