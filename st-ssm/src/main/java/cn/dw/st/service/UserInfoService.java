@@ -5,6 +5,7 @@ package cn.dw.st.service;
 
 import java.util.List;
 
+import cn.dw.st.common.BaseService;
 import cn.dw.st.domain.UserInfo;
 
 /**
@@ -14,14 +15,6 @@ import cn.dw.st.domain.UserInfo;
  */
 public interface UserInfoService {
 
-	public void add(UserInfo userInfo);
 	
-	public void update(UserInfo userInfo);
-	
-	public void delete(UserInfo userInfo);
-	
-	public List<UserInfo> query(UserInfo userInfo);
-	
-	public int login(UserInfo userInfo);
 	
 }

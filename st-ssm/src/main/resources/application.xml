@@ -70,17 +70,17 @@
 	
 	
 	
-	<aop:config >
+	<!-- <aop:config >
 		<aop:pointcut expression="execution(* cn.dw.st.controller.*.*(..))" id="point"/>
 		<aop:aspect id="aspect" ref="xmlAdvice">
 			<aop:before method="doBefore" pointcut-ref="point"/>
 			<aop:after method="doAfter" pointcut-ref="point"/>
 		</aop:aspect>
 	</aop:config>
+	 -->
 	
 	
-	
-	
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
 	
 	

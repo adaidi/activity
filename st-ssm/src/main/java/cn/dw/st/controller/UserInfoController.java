@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.InternalResourceView;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import cn.dw.st.aop.Log;
 import cn.dw.st.domain.UserInfo;
 import cn.dw.st.service.UserInfoService;
 
@@ -51,6 +52,7 @@ public class UserInfoController {
 	
 	@RequestMapping("/query")
 	@ResponseBody
+    @Log(name = "")
 	public String query(UserInfo userInfo) {
 		List<UserInfo>  lists = userInfoService.query(userInfo);
 		return lists.toString();
